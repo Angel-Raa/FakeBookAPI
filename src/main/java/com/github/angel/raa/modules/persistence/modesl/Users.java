@@ -8,6 +8,8 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.Set;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,11 +25,15 @@ public class Users {
     private String photo;
     private String bio;
     @CreationTimestamp
-    @Column(name = "create_at")
-    private LocalDateTime createAt;
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
     @UpdateTimestamp
     @Column(name = "update_at", nullable = false, updatable = false, insertable = false)
     private LocalDateTime updateAt;
     @Enumerated(EnumType.STRING)
     private Role role;
+    @OneToMany(mappedBy = "users", cascade = CascadeType.ALL,fetch = FetchType.EAGER, orphanRemoval = true, targetEntity = Post.class)
+    @OrderBy("publishedAt DESC")
+    @Column(name = "posts")
+    private Set<Post> posts;
 }
