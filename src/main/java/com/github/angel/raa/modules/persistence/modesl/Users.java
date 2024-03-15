@@ -16,7 +16,7 @@ import java.util.Set;
 @Entity
 @Table(name = "users")
 public class Users {
-    @Id @GeneratedValue(strategy = GenerationType.UUID)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     private Long userId;
     private String username;
