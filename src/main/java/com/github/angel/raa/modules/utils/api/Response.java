@@ -15,9 +15,9 @@ import java.time.LocalDateTime;
  * Clase genérica para representar las respuestas de la API, facilitando la estandarización
  * del formato de respuesta a través de los diferentes endpoints.
  *
- * @param <T> El tipo de dato del cuerpo de la respuesta. Esto permite flexibilidad para
- *            adaptar el cuerpo de la respuesta a las necesidades específicas de cada
- *            endpoint.
+ * @param <T> El tipo de dato del cuerpo de la respuesta.
+ *
+ *
  */
 @Data
 @NoArgsConstructor
@@ -30,6 +30,7 @@ public class Response<T> implements Serializable {
     private String message;
     @NotNull(message = "El código de estado no puede ser nulo")
     private HttpStatus status;
+    private boolean success;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
     private LocalDateTime timestamp;
     private T data;
