@@ -13,6 +13,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Set;
+import java.util.stream.Collectors;
+
 @Data
 @AllArgsConstructor
 @RequiredArgsConstructor
@@ -26,7 +28,9 @@ public class PostServiceImp implements PostService {
     @Transactional(readOnly = true)
     @Override
     public Set<PostDTO> getAllPosts() {
-        return null;
+        return repository.findAll().stream()
+                .map(it -> new PostDTO(it.getPostId(), it.getTitle(), it.getContent(), it.getPublishedAt(), it.getUpdatedAt()))
+                .collect(Collectors.toSet());
     }
 
     /**
