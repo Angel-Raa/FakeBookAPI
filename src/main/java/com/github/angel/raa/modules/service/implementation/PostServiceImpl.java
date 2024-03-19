@@ -100,7 +100,7 @@ public class PostServiceImpl implements PostService {
     public Response<PostDTO> deletePost(Long postId) {
         Post post = repository.findById(postId).orElseThrow(() -> new PostNotFoundExceptionHandler(Message.POST_NOT_FOUND_ID, 404));
         repository.delete(post);
-        return new Response<>(Message.POST_DELETE, HttpStatus.OK, true, LocalDateTime.now());
+        return new Response<>(Message.POST_DELETE, HttpStatus.NO_CONTENT, true, LocalDateTime.now());
     }
 
     @Contract("_ -> new")

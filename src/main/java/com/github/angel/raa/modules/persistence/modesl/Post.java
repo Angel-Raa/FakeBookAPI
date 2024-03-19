@@ -22,6 +22,7 @@ public class Post {
     @Column(name = "post_id")
     private Long postId;
     @ManyToOne
+    @JoinColumn(name = "user_id")
     private Users users;
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true, targetEntity = Comment.class)
     private Set<Comment> comments;

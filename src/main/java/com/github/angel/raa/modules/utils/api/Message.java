@@ -6,10 +6,7 @@ public class Message {
     public static final String POST_UPDATE = "Post updated successfully";
     public static final String POST_DELETE = "Post deleted successfully";
     public static final String  POST_NOT_FOUND_ID  = "Post Not found with id ";
-    public static final String  POST_NOT_FOUND_TITLE  = "Post Not found with title ";
-    public static final String  POST_NOT_FOUND_AUTHOR  = "Post Not found with author ";
-    public static final String  POST_NOT_FOUND_CATEGORY  = "Post Not found with category ";
-    public static final String  POST_NOT_FOUND_CONTENT  = "Post Not found with content ";
+
     public static final String USER_NOT_FOUND = "User Not found ";
     public static final String USER_NOT_FOUND_ID = "User Not found with id ";
     public static final String USER_NOT_FOUND_EMAIL = "User Not found with email ";
@@ -18,4 +15,8 @@ public class Message {
     public static final String USER_NOT_FOUND_ROLE = "User Not found with role ";
 
 
+    public static final String COMMENT_NOT_FOUND_ID_POST_ID_USER_ID = "Comment not found post id user id";
+    public static final String COMMENT_CREATE = "Comment created successfully";
+    public static final String COMMENT_UPDATE = "Comment updated successfully";
+    public static final String COMMENT_DELETE = "";
 }

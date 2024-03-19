@@ -1,5 +1,6 @@
 package com.github.angel.raa.modules.persistence.modesl;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,5 +29,6 @@ public class Comment {
     private Post post;
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonIgnore
     private Users users;
 }
