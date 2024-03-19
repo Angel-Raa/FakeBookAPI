@@ -1,9 +1,19 @@
 services:
-  mydatabase:
+  DATABASE:
     image: 'postgres:15-alpine'
+    container_name: 'fake-database'
+    restart: 'always'
+    networks:
+      - 'api-fake'
     environment:
-      - 'POSTGRES_DB=mydatabase'
-      - 'POSTGRES_PASSWORD=secret'
-      - 'POSTGRES_USER=mydatabase'
+      - 'POSTGRES_DB=api_fake_db'
+      - 'POSTGRES_PASSWORD=12345'
+      - 'POSTGRES_USER=fake'
     ports:
-      - '5432'
+      - '5050:5432'
+
+networks:
+  'api-fake':
+
+volumes:
+  'data':

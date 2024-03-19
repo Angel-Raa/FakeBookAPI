@@ -57,7 +57,7 @@ public class CommentServiceImpl implements CommentService {
      */
     @Transactional
     @Override
-    public Response<CommentDTO> createComment(CommentDTO commentDTO, Long postId, Long userId) {
+    public Response<CommentDTO> createComment(@NotNull CommentDTO commentDTO, Long postId, Long userId) {
         Users users = userRepository.findById(userId).orElseThrow(() -> new PostNotFoundExceptionHandler(Message.USER_NOT_FOUND_ID, 404));
         Post post = postRepository.findById(postId).orElseThrow(() -> new PostNotFoundExceptionHandler(Message.POST_NOT_FOUND_ID, 404));
         Comment comment = new Comment();
@@ -73,7 +73,7 @@ public class CommentServiceImpl implements CommentService {
      */
     @Transactional
     @Override
-    public Response<CommentDTO> updateComment(CommentDTO commentDTO, Long commentId) {
+    public Response<CommentDTO> updateComment(@NotNull CommentDTO commentDTO, Long commentId) {
         Comment comment = commentRepository.findById(commentId).orElseThrow(() -> new CommentNotFoundExceptionHandler(Message.COMMENT_NOT_FOUND_ID_POST_ID_USER_ID, 404));
         comment.setContent(commentDTO.content());
         commentRepository.save(comment);

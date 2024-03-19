@@ -11,8 +11,6 @@ import com.github.angel.raa.modules.utils.DTO.PostDTO;
 import com.github.angel.raa.modules.utils.DTO.PostWithCommentsDTO;
 import com.github.angel.raa.modules.utils.api.Message;
 import com.github.angel.raa.modules.utils.api.Response;
-import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.Contract;
@@ -25,8 +23,6 @@ import java.time.LocalDateTime;
 import java.util.Set;
 import java.util.stream.Collectors;
 @Service
-@Data
-@AllArgsConstructor
 @RequiredArgsConstructor
 public class PostServiceImpl implements PostService {
     private final PostRepository repository;
