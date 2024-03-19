@@ -17,6 +17,7 @@ public class Category {
     private Long id;
     private String name;
     private String description;
-    @OneToMany( fetch = FetchType.EAGER, orphanRemoval = true, targetEntity = Post.class)
+    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true, targetEntity = Post.class)
+    @JoinColumn(name = "category_id")
     private Set<Post> posts;
 }
