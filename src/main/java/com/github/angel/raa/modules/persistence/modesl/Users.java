@@ -22,7 +22,10 @@ public class Users {
     private String username;
     private String password;
     private String email;
-    private String photo;
+    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY, orphanRemoval = true, targetEntity = Image.class)
+    @JoinTable(name = "users_images", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "image_id"),
+            uniqueConstraints = @UniqueConstraint(columnNames = {"user_id", "image_id"}, name = "users_images_unique_constraint"))
+    private Image image;
     private String bio;
     @CreationTimestamp
     @Column(name = "created_at")
