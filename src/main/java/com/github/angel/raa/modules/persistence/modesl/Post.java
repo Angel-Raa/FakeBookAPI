@@ -21,8 +21,7 @@ public class Post {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "post_id")
     private Long postId;
-    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Users.class)
-    @JoinColumn(name = "user_id")
+    @ManyToOne
     private Users users;
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true, targetEntity = Comment.class)
     private Set<Comment> comments;

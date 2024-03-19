@@ -25,7 +25,6 @@ public class Comment {
     @Column(name = "update_at", nullable = false, updatable = false, insertable = false)
     private LocalDateTime updatedAt;
     @ManyToOne
-    @JoinColumn(name = "post_id")
     private Post post;
     @ManyToOne
     @JoinColumn(name = "user_id")

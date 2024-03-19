@@ -34,6 +34,7 @@ public class Users {
     private Role role;
     @OneToMany(mappedBy = "users", cascade = CascadeType.ALL,fetch = FetchType.EAGER, orphanRemoval = true, targetEntity = Post.class)
     @OrderBy("publishedAt DESC")
-    @Column(name = "posts")
+    @JoinTable(name = "users_posts", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "post_id"),
+            uniqueConstraints = @UniqueConstraint(columnNames = {"user_id", "post_id"}, name = "users_posts_unique_constraint"))
     private Set<Post> posts;
 }

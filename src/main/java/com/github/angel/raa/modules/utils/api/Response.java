@@ -34,4 +34,12 @@ public class Response<T> implements Serializable {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
     private LocalDateTime timestamp;
     private T data;
+
+    public Response(String message, HttpStatus status, boolean success, LocalDateTime timestamp) {
+        this.message = message;
+        this.status = status;
+        this.success = success;
+        this.timestamp = timestamp;
+    }
+
 }
