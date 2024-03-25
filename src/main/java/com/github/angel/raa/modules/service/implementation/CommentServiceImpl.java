@@ -12,6 +12,7 @@ import com.github.angel.raa.modules.service.intefaces.CommentService;
 import com.github.angel.raa.modules.utils.DTO.CommentDTO;
 import com.github.angel.raa.modules.utils.api.Message;
 import com.github.angel.raa.modules.utils.api.Response;
+import com.github.angel.raa.modules.utils.jwt.JwtTokenUtils;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -26,6 +27,7 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class CommentServiceImpl implements CommentService {
+    private final JwtTokenUtils tokenUtils;
     private final CommentRepository commentRepository;
     private final PostRepository postRepository;
     private final UserRepository userRepository;
@@ -48,8 +50,8 @@ public class CommentServiceImpl implements CommentService {
     public CommentDTO getComment(Long commentId) {
         return commentRepository.findById(commentId)
                 .stream()
-                .map(it -> new CommentDTO(it.getId(), it.getContent(), it.getCreatedAt(), it.getUpdatedAt()))
                 .findFirst()
+                .map(it -> new CommentDTO(it.getId(), it.getContent(), it.getCreatedAt(), it.getUpdatedAt()))
                 .orElseThrow(() -> new CommentNotFoundExceptionHandler(Message.COMMENT_NOT_FOUND_ID_POST_ID_USER_ID, 404));
     }
     /**
@@ -57,8 +59,9 @@ public class CommentServiceImpl implements CommentService {
      */
     @Transactional
     @Override
-    public Response<CommentDTO> createComment(@NotNull CommentDTO commentDTO, Long postId, Long userId) {
-        Users users = userRepository.findById(userId).orElseThrow(() -> new PostNotFoundExceptionHandler(Message.USER_NOT_FOUND_ID, 404));
+    public Response<CommentDTO> createComment(@NotNull CommentDTO commentDTO, Long postId, String token) {
+        String username = tokenUtils.getUsernameFromToke(token);
+        Users users = userRepository.findByUsername(username).orElseThrow(() -> new PostNotFoundExceptionHandler(Message.USER_NOT_FOUND_ID, 404));
         Post post = postRepository.findById(postId).orElseThrow(() -> new PostNotFoundExceptionHandler(Message.POST_NOT_FOUND_ID, 404));
         Comment comment = new Comment();
         comment.setContent(commentDTO.content());

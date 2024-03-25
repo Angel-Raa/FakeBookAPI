@@ -4,6 +4,7 @@ package com.github.angel.raa.modules.utils.jwt;
 import com.github.angel.raa.modules.persistence.modesl.Users;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
+import jakarta.servlet.http.HttpServletRequest;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Value;
@@ -75,7 +76,7 @@ public class JwtTokenUtils {
      * @param token El token JWT del que se extraerá la fecha de expiración.
      * @return La fecha de expiración del token.
      */
-    private Date getExpirationFromToken(String token){
+    public Date getExpirationFromToken(String token){
         return getClaim(token, Claims::getExpiration);
     }
 
@@ -86,7 +87,7 @@ public class JwtTokenUtils {
      * @return true si el token ha expirado, false en caso contrario.
      */
     @Contract(pure = true)
-    private @NotNull Boolean isTokenExpired(String token) {
+    public @NotNull Boolean isTokenExpired(String token) {
         return getExpirationFromToken(token).before(new Date());
     }
     /**
@@ -129,6 +130,18 @@ public class JwtTokenUtils {
         claims.put("Role", users.getRole());
         claims.put("Authorities", users.getAuthorities());
         return claims;
+    }
+    /**
+     * Extracts the JWT token from the Authorization header of the HTTP request.
+     *
+     * @param request The HttpServletRequest object representing the HTTP request.
+     * @return The JWT token extracted from the Authorization header, or null if the header is not present or does not start with "Bearer ".
+     * @throws IllegalArgumentException if the request parameter is null.
+     */
+    public  String extractJwtFromRequest(@NotNull HttpServletRequest request) throws IllegalAccessException {
+        String header = request.getHeader("Authorization");
+        if(header == null || !header.startsWith("Bearer ")) return null;
+        return header.substring(7);
     }
 
 

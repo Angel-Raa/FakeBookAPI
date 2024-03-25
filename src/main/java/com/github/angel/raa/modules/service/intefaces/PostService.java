@@ -35,10 +35,10 @@ public interface PostService {
      * Crea un nuevo post.
      *
      * @param postDTO El objeto PostDTO que contiene los datos del nuevo post.
-     * @param userId  El ID del usuario que crea el post.
+     * @param token  El ID del usuario que crea el post.
      * @return Una respuesta que encapsula el objeto PostDTO creado y un mensaje indicando el éxito de la operación.
      */
-    Response<PostDTO> createPost(PostDTO postDTO, Long userId);
+    Response<PostDTO> createPost(PostDTO postDTO, String token);
 
     /**
      * Actualiza un post existente.

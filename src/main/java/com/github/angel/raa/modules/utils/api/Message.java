@@ -13,10 +13,12 @@ public class Message {
     public static final String USER_NOT_FOUND_USERNAME = "User Not found with username ";
 
     public static final String USER_NOT_FOUND_ROLE = "User Not found with role ";
+    public  static  final  String SIGN_SUCCESSFULLY = "Registered user successfully";
 
 
     public static final String COMMENT_NOT_FOUND_ID_POST_ID_USER_ID = "Comment not found post id user id";
     public static final String COMMENT_CREATE = "Comment created successfully";
     public static final String COMMENT_UPDATE = "Comment updated successfully";
     public static final String COMMENT_DELETE = "";
+    public static final String LOGIN_SUCCESSFULLY = "user login successfully";
 }

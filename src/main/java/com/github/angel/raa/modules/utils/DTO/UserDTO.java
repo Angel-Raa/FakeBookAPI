@@ -1,5 +1,7 @@
 package com.github.angel.raa.modules.utils.DTO;
 
-public record UserDTO(String userId, String username, String email, String photo,
-                      String bio, String createAt, String updateAt) {
+import java.time.LocalDateTime;
+
+public record UserDTO(Long userId, String username, String email, String photo,
+                      String bio, LocalDateTime createAt, LocalDateTime updateAt) {
 }

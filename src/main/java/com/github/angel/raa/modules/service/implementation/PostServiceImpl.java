@@ -3,7 +3,6 @@ package com.github.angel.raa.modules.service.implementation;
 import com.github.angel.raa.modules.exception.PostNotFoundExceptionHandler;
 import com.github.angel.raa.modules.persistence.modesl.Post;
 import com.github.angel.raa.modules.persistence.modesl.Users;
-import com.github.angel.raa.modules.persistence.repository.CommentRepository;
 import com.github.angel.raa.modules.persistence.repository.PostRepository;
 import com.github.angel.raa.modules.persistence.repository.UserRepository;
 import com.github.angel.raa.modules.service.intefaces.PostService;
@@ -11,6 +10,7 @@ import com.github.angel.raa.modules.utils.DTO.PostDTO;
 import com.github.angel.raa.modules.utils.DTO.PostWithCommentsDTO;
 import com.github.angel.raa.modules.utils.api.Message;
 import com.github.angel.raa.modules.utils.api.Response;
+import com.github.angel.raa.modules.utils.jwt.JwtTokenUtils;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.Contract;
@@ -27,7 +27,8 @@ import java.util.stream.Collectors;
 public class PostServiceImpl implements PostService {
     private final PostRepository repository;
     private final UserRepository userRepository;
-    private final CommentRepository commentRepository;
+    private final JwtTokenUtils tokenUtils;
+
     /**
      * {@inheritDoc}
      */
@@ -45,9 +46,8 @@ public class PostServiceImpl implements PostService {
     @Transactional(readOnly = true)
     @Override
     public PostDTO getPost(@NonNull Long postId) {
-        return repository.findById(postId).stream()
+        return repository.findById(postId).stream().findFirst()
                 .map(it -> new PostDTO(it.getPostId(), it.getTitle(), it.getContent(), it.getPublishedAt(), it.getUpdatedAt()))
-                .findFirst()
                 .orElseThrow(() -> new PostNotFoundExceptionHandler(Message.POST_NOT_FOUND_ID, 404));
     }
 
@@ -65,8 +65,9 @@ public class PostServiceImpl implements PostService {
      */
     @Transactional
     @Override
-    public Response<PostDTO> createPost(PostDTO postDTO, Long userId) {
-        Users users = userRepository.findById(userId).orElseThrow(() -> new PostNotFoundExceptionHandler(Message.USER_NOT_FOUND_ID, 404));
+    public Response<PostDTO> createPost(PostDTO postDTO, String token) {
+        String username = tokenUtils.getUsernameFromToke(token);
+        Users users = userRepository.findByUsername(username).orElseThrow(() -> new PostNotFoundExceptionHandler(Message.USER_NOT_FOUND_ID, 404));
         Post post = mapDTOToPost(postDTO);
         post.setUsers(users);
         PostDTO dto = mapPostToDTO(post);

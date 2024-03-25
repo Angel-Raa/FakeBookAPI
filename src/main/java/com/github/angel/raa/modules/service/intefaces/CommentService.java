@@ -31,11 +31,10 @@ public interface CommentService {
      *
      * @param commentDTO El objeto CommentDTO que contiene los datos del nuevo comentario.
      * @param postId     El ID del post al que se asocia el comentario.
-     * @param userId     El ID del usuario que crea el comentario.
      * @return Una respuesta que encapsula el objeto CommentDTO creado y un mensaje indicando el éxito de la operación.
      * @throws CommentNotFoundExceptionHandler Si no se encuentra ningún post con el ID proporcionado o ningún usuario con el ID proporcionado.
      */
-    Response<CommentDTO> createComment(CommentDTO commentDTO, Long postId, Long userId);
+    Response<CommentDTO> createComment(CommentDTO commentDTO, Long postId, String token);
 
     /**
      * Actualiza un comentario existente.
