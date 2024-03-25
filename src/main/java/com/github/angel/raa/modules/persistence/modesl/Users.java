@@ -25,6 +25,8 @@ public class Users implements UserDetails {
     private Long userId;
     @Column(name = "username", unique = true, length = 50)
     private String username;
+    @Column(name = "name", length = 25)
+    private String name;
     private String password;
     @Column(name = "email", length = 50)
     private String email;

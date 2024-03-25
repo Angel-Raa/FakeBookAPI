@@ -2,7 +2,7 @@ package com.github.angel.raa.modules.service.intefaces;
 
 
 import com.github.angel.raa.modules.exception.CommentNotFoundExceptionHandler;
-import com.github.angel.raa.modules.utils.DTO.CommentDTO;
+import com.github.angel.raa.modules.utils.dto.CommentDTO;
 import com.github.angel.raa.modules.utils.api.Response;
 
 import java.util.Set;

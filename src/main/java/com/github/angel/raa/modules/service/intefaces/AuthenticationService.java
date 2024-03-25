@@ -1,7 +1,7 @@
 package com.github.angel.raa.modules.service.intefaces;
 
-import com.github.angel.raa.modules.utils.DTO.Login;
-import com.github.angel.raa.modules.utils.DTO.Sign;
+import com.github.angel.raa.modules.utils.dto.Login;
+import com.github.angel.raa.modules.utils.dto.Sign;
 import com.github.angel.raa.modules.utils.api.AuthenticationResponse;
 import jakarta.servlet.http.HttpServletRequest;
 

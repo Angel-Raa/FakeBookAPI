@@ -21,4 +21,6 @@ public class Message {
     public static final String COMMENT_UPDATE = "Comment updated successfully";
     public static final String COMMENT_DELETE = "";
     public static final String LOGIN_SUCCESSFULLY = "user login successfully";
+    public static final String USER_CREATE = "User created successfully";
+    public static final String USER_UPDATE = "Successfully updated user" ;
 }

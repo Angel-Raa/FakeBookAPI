@@ -9,7 +9,7 @@ import com.github.angel.raa.modules.persistence.repository.CommentRepository;
 import com.github.angel.raa.modules.persistence.repository.PostRepository;
 import com.github.angel.raa.modules.persistence.repository.UserRepository;
 import com.github.angel.raa.modules.service.intefaces.CommentService;
-import com.github.angel.raa.modules.utils.DTO.CommentDTO;
+import com.github.angel.raa.modules.utils.dto.CommentDTO;
 import com.github.angel.raa.modules.utils.api.Message;
 import com.github.angel.raa.modules.utils.api.Response;
 import com.github.angel.raa.modules.utils.jwt.JwtTokenUtils;

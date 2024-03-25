@@ -1,7 +1,8 @@
 package com.github.angel.raa.modules.service.intefaces;
 
-import com.github.angel.raa.modules.utils.DTO.UserDTO;
+import com.github.angel.raa.modules.utils.dto.InfoDTO;
 import com.github.angel.raa.modules.utils.api.Response;
+import com.github.angel.raa.modules.utils.dto.UserDTO;
 
 import java.util.Set;
 /**
@@ -13,21 +14,21 @@ public interface UserService {
      *
      * @return Un conjunto de objetos UserDTO que representan todos los usuarios.
      */
-    Set<UserDTO> getAllUsers();
+    Set<InfoDTO> getAllUsers();
     /**
      * Obtiene un usuario por su ID.
      *
      * @param userId El ID del usuario a obtener.
      * @return El objeto UserDTO que representa el usuario correspondiente al ID proporcionado.
      */
-    UserDTO getUserById(Long userId);
+    InfoDTO getUserById(Long userId);
     /**
      * Obtiene un usuario por su nombre de usuario.
      *
      * @param username El nombre de usuario del usuario a obtener.
      * @return El objeto UserDTO que representa el usuario correspondiente al nombre de usuario proporcionado.
      */
-    UserDTO getUserByUsername(String username);
+    InfoDTO getUserByUsername(String username);
     /**
      * Crea un nuevo usuario y lo agrega a una respuesta del tipo UserDTO en un Response.
      *
@@ -35,7 +36,7 @@ public interface UserService {
      * @param token  El token de autenticación del usuario.
      * @return Una respuesta que encapsula el objeto UserDTO creado y un mensaje indicando el éxito de la operación.
      */
-    Response<UserDTO> create(UserDTO dto,  String token);
+    Response<UserDTO> create(UserDTO dto, String token);
     /**
      * Actualiza el email de un usuario y agrega la información a una respuesta del tipo UserDTO en un Response.
      *

@@ -1,7 +1,7 @@
 package com.github.angel.raa.modules.service.intefaces;
 
-import com.github.angel.raa.modules.utils.DTO.PostDTO;
-import com.github.angel.raa.modules.utils.DTO.PostWithCommentsDTO;
+import com.github.angel.raa.modules.utils.dto.PostDTO;
+import com.github.angel.raa.modules.utils.dto.PostWithCommentsDTO;
 import com.github.angel.raa.modules.utils.api.Response;
 
 import java.util.Set;

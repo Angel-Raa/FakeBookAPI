@@ -1,4 +1,4 @@
-package com.github.angel.raa.modules.utils.DTO;
+package com.github.angel.raa.modules.utils.dto;
 
 import org.springframework.web.multipart.MultipartFile;
 
