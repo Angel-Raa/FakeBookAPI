@@ -25,7 +25,7 @@ import java.time.LocalDateTime;
 @Builder
 public class Response<T> implements Serializable {
     @Serial
-    private static final long serialVersionUID = 102918L;
+    private static final long serialVersionUID = 4123418830381902918L;
     @NotNull(message = "El mensaje no puede ser nulo")
     private String message;
     @NotNull(message = "El código de estado no puede ser nulo")

@@ -1,40 +1,30 @@
 package com.github.angel.raa.modules.persistence.modesl;
 
 
+import lombok.Getter;
+
 import java.util.Arrays;
 import java.util.List;
 
-public enum Role {
-    ROLE_USER(Arrays.asList(
-            Permission.WRITE_MY_PROFILE,
-            Permission.WRITE_BLOG_POSTS,
-            Permission.READ_BLOG_POSTS,
-            Permission.READ_MY_PROFILE
 
-    )),
+@Getter
+public enum Role {
+    ROLE_USER(List.of(Permission.READ_ONLY)),
+
     ROLE_ADMIN(Arrays.asList(
-            Permission.WRITE_MY_PROFILE,
-            Permission.COMMENT_ON_POSTS,
-            Permission.WRITE_BLOG_POSTS,
-            Permission.READ_BLOG_POSTS,
-            Permission.READ_MY_PROFILE,
-            Permission.DELETE_BLOG_POSTS,
+            Permission.READ_ONLY,
+            Permission.CREATE_COMMENTS,
+            Permission.UPDATE_COMMENTS,
             Permission.DELETE_COMMENTS,
-            Permission.CREATE_ONE_POST
+            Permission.CREATE_POST,
+            Permission.UPDATE_POST,
+            Permission.DELETE_POSTS
     ));
 
 
-    private List<Permission> permissionList;
-
-    Role(List<Permission> permissionList) {
-        this.permissionList = permissionList;
+    private final List<Permission> permission;
+    Role(List<Permission> permission) {
+        this.permission = permission;
     }
 
-    public List<Permission> getPermissionList() {
-        return permissionList;
-    }
-
-    public void setPermissionList(List<Permission> permissionList) {
-        this.permissionList = permissionList;
-    }
 }

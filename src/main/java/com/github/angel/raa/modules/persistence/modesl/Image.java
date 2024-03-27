@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.UUID;
 
 @Entity
@@ -12,7 +14,9 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Image {
+public class Image implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 184179470754667710L;
     @Id @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     @Column(name = "name_image")

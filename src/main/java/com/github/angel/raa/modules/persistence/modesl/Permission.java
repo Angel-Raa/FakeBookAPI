@@ -1,14 +1,17 @@
 package com.github.angel.raa.modules.persistence.modesl;
 
 public enum Permission {
-    READ_MY_PROFILE,
-    WRITE_MY_PROFILE,
-    READ_BLOG_POSTS,
-    WRITE_BLOG_POSTS,
-    DELETE_BLOG_POSTS,
-    COMMENT_ON_POSTS,
+    READ_ONLY,
+
+    // COMMENTS
     DELETE_COMMENTS,
-    CREATE_ONE_POST
+    CREATE_COMMENTS,
+    UPDATE_COMMENTS,
+
+    //POST
+    UPDATE_POST,
+    DELETE_POSTS,
+    CREATE_POST
 
 
 }

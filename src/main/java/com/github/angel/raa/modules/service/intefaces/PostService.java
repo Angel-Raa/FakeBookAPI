@@ -3,6 +3,7 @@ package com.github.angel.raa.modules.service.intefaces;
 import com.github.angel.raa.modules.utils.dto.PostDTO;
 import com.github.angel.raa.modules.utils.dto.PostWithCommentsDTO;
 import com.github.angel.raa.modules.utils.api.Response;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 import java.util.Set;
 /**

@@ -46,8 +46,8 @@ public class Users implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         if (role == null) return Collections.emptyList();
-        if(role.getPermissionList() == null) return Collections.emptyList();
-        return role.getPermissionList()
+        if(role.getPermission() == null) return Collections.emptyList();
+        return role.getPermission()
                 .stream().map(Enum::name)
                 .map((SimpleGrantedAuthority::new))
                 .toList();
